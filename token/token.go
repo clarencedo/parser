@@ -30,7 +30,7 @@ const (
 	RETURN    = "RETURN"
 	EQ        = "=="
 	NOT_EQ    = "!="
-	INT       = "INT"
+	INT       = "INTEGER"
 )
 
 var keywords = map[string]TokenType{

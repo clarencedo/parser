@@ -1,36 +1,51 @@
 package token
 
+type TokenType string
+
+type Token struct {
+	Type    TokenType
+	Literal string
+}
+
 const (
 	ILLEGAL = "ILLEGAL"
 	EOF     = "EOF"
-	IDENT   = "IDENT" //add ,foobar ,x , y
 
-	//yunsuanfu
+	// Identifiers + literals
+	IDENT = "IDENT" // add, foobar, x, y, ...
+	INT   = "INT"   // 1343456
+
+	// Operators
 	ASSIGN   = "="
 	PLUS     = "+"
 	MINUS    = "-"
 	BANG     = "!"
 	ASTERISK = "*"
 	SLASH    = "/"
-	LT       = "<"
-	GT       = ">"
 
+	LT = "<"
+	GT = ">"
+
+	EQ     = "=="
+	NOT_EQ = "!="
+
+	// Delimiters
 	COMMA     = ","
 	SEMICOLON = ";"
-	LPAREN    = "("
-	RPAREN    = ")"
-	LBRACE    = "{"
-	RBRACE    = "}"
-	FUNCTION  = "FUNCTION"
-	LET       = "LET"
-	TRUE      = "TRUE"
-	FALSE     = "FALSE"
-	IF        = "IF"
-	ELSE      = "ELSE"
-	RETURN    = "RETURN"
-	EQ        = "=="
-	NOT_EQ    = "!="
-	INT       = "INTEGER"
+
+	LPAREN = "("
+	RPAREN = ")"
+	LBRACE = "{"
+	RBRACE = "}"
+
+	// Keywords
+	FUNCTION = "FUNCTION"
+	LET      = "LET"
+	TRUE     = "TRUE"
+	FALSE    = "FALSE"
+	IF       = "IF"
+	ELSE     = "ELSE"
+	RETURN   = "RETURN"
 )
 
 var keywords = map[string]TokenType{
@@ -41,13 +56,6 @@ var keywords = map[string]TokenType{
 	"if":     IF,
 	"else":   ELSE,
 	"return": RETURN,
-}
-
-type TokenType string
-
-type Token struct {
-	Type    TokenType
-	Literal string
 }
 
 func LookupIdent(ident string) TokenType {
